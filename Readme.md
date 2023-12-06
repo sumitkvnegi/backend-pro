@@ -20,3 +20,20 @@ install nodemon as adev depedency for server reload
 in package file add -> "start": "nodemon src/index.js"
 add and push the changes to the git (git push)
 in src folder create essential folders -> mkdir controllers db routes middlewares models utils 
+install prettier package
+created file -> .prettierrc [here we can configure prettier for whole team as common styling and formatting]
+some configure settings for prettier "{
+    "singleQuote":false,
+    "barcketSpacing":true,
+    "tabWidth":2,
+    "trailingComma":"es5",
+    "semi":true
+}"
+create new file .prettierignore -> this file is use to tell prettier which files and folder we don't want to use prettier configures 
+"/.vscode
+/node_modules
+./dist
+
+*.env
+.env
+.env*"
