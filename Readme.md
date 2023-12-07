@@ -4,6 +4,18 @@ This is an overview of this backend folder
 
 - [Model Link](https://app.eraser.io/workspace/YtPqZ1VogxGy1jzIDkzj#note-title-editor)
 
+# important links
+
+- [express](https://expressjs.com/)
+- [mongoose](https://mongoosejs.com/docs/)
+- [cookie-parser](https://expressjs.com/en/resources/middleware/cookie-parser.html)
+- [mongoose-aggregate-paginate-v2](https://github.com/aravindnc/mongoose-aggregate-paginate-v2)
+- [bcrypt](https://github.com/dcodeIO/bcrypt.js/blob/master/README.md)
+- [jwt](https://jwt.io/introduction)
+- [fs](https://nodejs.org/api/fs.html)
+- [cloudinary](https://cloudinary.com/documentation)
+- [multer](https://github.com/expressjs/multer)
+
 # time line
 
 # part 1
@@ -95,3 +107,61 @@ app.use(cookieParser);
 ```
 
 - use of cookie-parser is to configure or do crud operation on cookie storage of front end user browser from server
+- in utils folder for code consistency and standard we create some utility functions and classes -> ApiError, ApiResponse, asyncHandler
+
+```
+// asyncHandler.js
+const asyncHandler = (requestHandler) => {
+    (req, res, next) => {
+        Promise.resolve(requestHandler(req, res, next)).catch((err) => next(err));
+    }
+}
+
+export { asyncHandler };
+
+// ApiError.js
+class ApiError extends Error {
+  constructor(
+    statusCode,
+    message = "Something went wrong",
+    errors = [],
+    stack = ""
+  ) {
+    super(message);
+    this.statusCode = statusCode;
+    this.data = null;
+    this.message = message;
+    this.success = false;
+    this.errors = errors;
+
+    if (stack) {
+      this.stack = stack;
+    } else {
+      Error.captureStackTrace(this, this.constructor);
+    }
+  }
+}
+
+export { ApiError };
+
+// ApiResponse.js
+class ApiResponse {
+    constructor(statusCode, data, message = "Success"){
+        this.statusCode = statusCode;
+        this.data = data;
+        this.message = message;
+        this.success = statusCode < 400;
+    }
+}
+
+export { ApiResponse };
+```
+- create user and video models, create their schema using database model diagram in the link 
+- install some packages -> npm i mongoose-aggregate-paginate-v2 bcrypt jsonwebtoken
+- use mongoose-aggregate-paginate-v2 plugin in videoSchema
+- bcrypt and jwt used in functions in mongoose schema methods for later use 
+- install cloudinary and multer package
+- signup/signin in cloudinary and copy configure file containing cloudname, apikey, etc
+- in env keep cloudinary secrets
+- create a utils file "cloudinary.js" and add file upload function after configuration and then export
+- create a multer.middleware.js file 
