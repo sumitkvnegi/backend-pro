@@ -20,10 +20,10 @@ This is an overview of this backend folder
 
 # part 1
 
-- npm init 
+- npm init
 - git new repo and intial commit
 - public > temp folder created
-- .gitkeep file use 
+- .gitkeep file use
 - .gitignore file created
 - [gitignore generator use](https://mrkandreev.name/snippets/gitignore-generator/#Node)
 - .env file created
@@ -33,10 +33,10 @@ This is an overview of this backend folder
 - install nodemon as a dev depedency for server reload
 - in package file add -> "start": "nodemon src/index.js"
 - add and push the changes to the git (git push)
-- in src folder create essential folders -> mkdir controllers db routes middlewares models utils 
+- in src folder create essential folders -> mkdir controllers db routes middlewares models utils
 - install prettier package
 - created file -> .prettierrc [here we can configure prettier for whole team as common styling and formatting]
-- some configure settings for prettier 
+- some configure settings for prettier
 
 ```
 {
@@ -48,14 +48,14 @@ This is an overview of this backend folder
 }
 ```
 
-- create new file .prettierignore -> this file is use to tell prettier which files and folder we don't want to use prettier configures 
+- create new file .prettierignore -> this file is use to tell prettier which files and folder we don't want to use prettier configures
 
 ```
 /.vscode
 /node_modules
 ./dist
 *.env
-.env 
+.env
 .env*
 ```
 
@@ -67,7 +67,7 @@ This is an overview of this backend folder
 - in env file add PORT=8000 MONGODB_URI = mongodb+srv://<username>:<password>@cluster0.umo0aow.mongodb.net
 - in constants file add -> export const DB_NAME = "videotube"
 - install packages -> npm i express mongoose dotenv
-- in db folder create a index.js file and create a mongodb connect to database function and export 
+- in db folder create a index.js file and create a mongodb connect to database function and export
 
 ```
 import mongoose from "mongoose";
@@ -97,7 +97,7 @@ app.use(cors({
 }));
 ```
 
-- also configure other middlewares like json, urlencoded, static 
+- also configure other middlewares like json, urlencoded, static
 
 ```
 app.use(express.json({limit: "16kb"}));
@@ -156,12 +156,13 @@ class ApiResponse {
 
 export { ApiResponse };
 ```
-- create user and video models, create their schema using database model diagram in the link 
+
+- create user and video models, create their schema using database model diagram in the link
 - install some packages -> npm i mongoose-aggregate-paginate-v2 bcrypt jsonwebtoken
 - use mongoose-aggregate-paginate-v2 plugin in videoSchema
-- bcrypt and jwt used in functions in mongoose schema methods for later use 
+- bcrypt and jwt used in functions in mongoose schema methods for later use
 - install cloudinary and multer package
 - signup/signin in cloudinary and copy configure file containing cloudname, apikey, etc
 - in env keep cloudinary secrets
 - create a utils file "cloudinary.js" and add file upload function after configuration and then export
-- create a multer.middleware.js file 
+- create a multer.middleware.js file
